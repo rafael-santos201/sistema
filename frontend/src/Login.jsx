@@ -11,7 +11,7 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const response = await fetch("https://sistema-backend-7lv0.onrender.com/api/auth/login", {
+      const response = await fetch("https://sistema-t3b5.onrender.com/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ login, senha }),
