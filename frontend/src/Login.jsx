@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [login, setLogin] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     setErro(null);
@@ -23,7 +25,15 @@ export default function Login() {
       }
 
       const data = await response.json();
-      alert("Login bem-sucedido! Token: " + data.token);
+      // Supondo que a API retorne data.token e data.role (ex: "ADM" ou "FUNCIONARIO")
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("role", data.role);
+
+      if (data.role === "ADM") {
+        navigate("/painel-adm");
+      } else {
+        navigate("/painel-funcionario");
+      }
     } catch (e) {
       setErro(e.message);
     } finally {
