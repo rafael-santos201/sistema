@@ -33,8 +33,9 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.UseHttpsRedirection();
+app.UseCors("AllowAll");
 app.MapControllers();
 
-app.UseHttpsRedirection();
 
 app.Run();
