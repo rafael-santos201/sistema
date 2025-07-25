@@ -3,10 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 builder.Services.AddControllers();
-
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddCors(options =>
 {
@@ -17,6 +14,7 @@ builder.Services.AddCors(options =>
                .AllowAnyHeader();
     });
 });
+
 builder.Services.AddOpenApi();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -24,17 +22,15 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 var app = builder.Build();
 
+app.UseHttpsRedirection();
+
 app.UseCors("AllowAll");
 
-
+app.MapControllers();
 
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
-
-app.MapControllers();
-
-app.UseHttpsRedirection();
 
 app.Run();
