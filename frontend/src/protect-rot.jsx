@@ -4,7 +4,7 @@ export function PrivateRouteAdm({ children }) {
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
 
-  if (!token || role !== "ADM") {
+  if (!token || role !== "adm") {
     return <Navigate to="/login" />;
   }
 

@@ -29,7 +29,7 @@ export default function Login() {
       localStorage.setItem("token", data.token);
       localStorage.setItem("role", data.role);
 
-      if (data.role === "ADM") {
+      if (data.role === "adm") {
         navigate("/painel-adm");
       } else {
         navigate("/painel-funcionario");
