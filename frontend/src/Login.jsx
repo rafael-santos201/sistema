@@ -24,16 +24,17 @@ export default function Login() {
         throw new Error(erroApi.message || "Falha no login");
       }
 
-      const data = await response.json();
-      // Supondo que a API retorne data.token e data.role (ex: "ADM" ou "FUNCIONARIO")
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("role", data.role);
+    const data = await response.json();
+    console.log("Role do usuário:", data.role);
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("role", data.role);
 
-      if (data.role === "adm") {
-        navigate("/painel-adm");
-      } else {
-        navigate("/painel-funcionario");
-      }
+    if (data.role?.toLowerCase() === "admin") {
+      navigate("/painel-adm");
+    } else {
+      navigate("/painel-funcionario");
+    }
+
     } catch (e) {
       setErro(e.message);
     } finally {

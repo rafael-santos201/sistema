@@ -2,7 +2,8 @@ import { useState } from 'react'
 import './App.css'
 import Login from './Login.jsx' 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import PainelAdm from './PainelAdm.jsx'
+import PainelAdm from "./PainelDeAdm.jsx";
+
 function App() {
 
 return (
@@ -14,7 +15,7 @@ return (
           path="/painel-adm"
           element={
             <PrivateRouteAdm>
-              <PainelAdm />
+              <PainelDeAdm />
             </PrivateRouteAdm>
           }
         />
@@ -23,4 +24,5 @@ return (
       </Routes>
     </BrowserRouter>
   );}
+
 export default App
