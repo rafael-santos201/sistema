@@ -11,9 +11,9 @@ builder.Services.AddCors(options =>
     {
         builder.WithOrigins(
             "http://localhost:5173",
-            "https://sistema-t3b5.onrender.com",
-            "https://sistema-front-pzdo8tx4e-rafaels-projects-27852702.vercel.app"
+            "https://sistema-t3b5.onrender.com"
         )
+        .SetIsOriginAllowed(origin => new Uri(origin).Host.EndsWith("vercel.app"))
         .AllowAnyMethod()
         .AllowAnyHeader()
         .AllowCredentials();
