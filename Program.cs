@@ -39,5 +39,6 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+app.MapGet("/", () => "API online");
 
 app.Run();
