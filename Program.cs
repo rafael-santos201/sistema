@@ -9,13 +9,12 @@ builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", policy =>
+    options.AddPolicy("AllowAll", builder =>
     {
-        policy.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader()
-              .SetIsOriginAllowed(_ => true)
-              .AllowCredentials();
+        builder.WithOrigins("http://localhost:5173", "https://sistema-t3b5.onrender.com")
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .AllowCredentials();
     });
 });
 
